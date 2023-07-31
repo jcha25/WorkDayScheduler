@@ -1,5 +1,5 @@
 $(function () {
-  var save = $(".save")
+  var save = $(".saveBtn")
   var timeBlock = $(".time-block")
   var currentDay = $("#currentDay")
   currentDay.text(dayjs().format("MMMM, DD, YYYY"))
@@ -14,6 +14,14 @@ $(function () {
     } else {
       $(this).children(".description").attr("class", "col-8 col-md-10 description present")
     }
+  })
+
+  save.on("click", function(event) {
+    event.preventDefault()
+    var text = $(this).siblings(".description").val().replace(id)
+    var id = $(this).parent().attr("id")
+
+    localStorage.setItem(id, text)
   })
 
 
